@@ -20,13 +20,18 @@
 
       <section class="mx-auto">
         <div class="row mx-auto">
-          <div class="col-md-4">Full Name</div>
+          <div class="col-md-4" id="">Full Name</div>
           <div class="col-md-8">
-            <input type="text" name="name" id="" class="form-control" />
+            <input
+              type="text"
+              name="name"
+              id="txtfullname"
+              class="form-control"
+            />
           </div>
           <div class="col-md-4">Select City</div>
           <div class="col-md-8">
-            <select type="text" name="city" id="" class="form-control">
+            <select type="text" name="city" id="cbostate" class="form-control">
               <option value="Arizona">Arizona</option>
               <option value="Califonia">Califonia</option>
               <option value="San-Francisco">San-Francisco</option>
@@ -44,19 +49,34 @@
         <div class="row mx-auto">
           <div class="col-md-4">Federal Tax (%)</div>
           <div class="col-md-8">
-            <input type="text" name="name" id="" class="form-control" />
+            <input
+              type="text"
+              name="name"
+              id="txtfederaltax"
+              class="form-control"
+            />
           </div>
           <div class="col-md-4">State Tax (%)</div>
           <div class="col-md-8">
-            <input type="text" name="name" id="" class="form-control" />
+            <input
+              type="text"
+              name="name"
+              id="txtstatetax"
+              class="form-control"
+            />
           </div>
           <div class="col-md-4">PAYE (%)</div>
           <div class="col-md-8">
-            <input type="text" name="name" id="" class="form-control" />
+            <input type="text" name="name" id="txtpayee" class="form-control" />
           </div>
           <div class="col-md-4">Compulsory Pension Fund (%)</div>
           <div class="col-md-8">
-            <input type="text" name="name" id="" class="form-control" />
+            <input
+              type="text"
+              name="name"
+              id="txtpension"
+              class="form-control"
+            />
           </div>
         </div>
       </section>
@@ -69,12 +89,17 @@
         <div class="row mx-auto">
           <div class="col-md-4">Gross Income (%)</div>
           <div class="col-md-8">
-            <input type="text" name="name" id="" class="form-control" />
+            <input
+              type="text"
+              name="name"
+              id="txtgrossincome"
+              class="form-control"
+            />
           </div>
         </div>
 
         <div class="col-md-12 mx-auto p-3">
-          <button class="btn btn-secondary">
+          <button class="btn btn-secondary" id="btncalculatetax">
             <i class="fa fa-calculator"></i> Calculate Tax
           </button>
         </div>
