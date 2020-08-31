@@ -12,7 +12,122 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
-  <body>
+  <body onload="getTaxResult()">
+    <script>
+      var yearlyTax;
+      var yearlyTakeHome;
+      var effectiveTaxRate;
+
+      function getTaxResult() {
+        // get yearly results
+        document.getElementById(
+          "tgrossyearly"
+        ).innerHTML = sessionStorage.getItem("grossIncomeYearly");
+        document.getElementById(
+          "tfederalyearly"
+        ).innerHTML = sessionStorage.getItem("federalTaxYearly");
+        document.getElementById(
+          "tstateyearly"
+        ).innerHTML = sessionStorage.getItem("stateTaxYearly");
+        document.getElementById(
+          "tpayeyearly"
+        ).innerHTML = sessionStorage.getItem("payeYearly");
+        document.getElementById(
+          "tpensionyearly"
+        ).innerHTML = sessionStorage.getItem("pensionYearly");
+        document.getElementById(
+          "tmedicareyearly"
+        ).innerHTML = sessionStorage.getItem("medicareYearly");
+
+        yearlyTax =
+          Number(sessionStorage.getItem("federalTaxYearly")) +
+          Number(sessionStorage.getItem("stateTaxYearly")) +
+          Number(sessionStorage.getItem("payeYearly")) +
+          Number(sessionStorage.getItem("pensionYearly")) +
+          Number(sessionStorage.getItem("medicareYearly"));
+        document.getElementById("syearlytax").innerHTML = yearlyTax;
+        document.getElementById("syearlyincome").innerHTML = Number(
+          sessionStorage.getItem("grossIncomeYearly")
+        );
+        yearlyTakeHome =
+          Number(sessionStorage.getItem("grossIncomeYearly")) - yearlyTax;
+
+        document.getElementById("syearlytakehome").innerHTML = yearlyTakeHome;
+
+        document.getElementById("seffectivetax").innerHTML = Number(
+          sessionStorage.getItem("effectiveTaxRate")
+        );
+
+        // Get monthly result
+        document.getElementById(
+          "tgrossmonthly"
+        ).innerHTML = sessionStorage.getItem("grossIncomeMonthly");
+        document.getElementById(
+          "tfederalmonthly"
+        ).innerHTML = sessionStorage.getItem("federalTaxMonthly");
+        document.getElementById(
+          "tstatemonthly"
+        ).innerHTML = sessionStorage.getItem("stateTaxMonthly");
+        document.getElementById(
+          "tpayemonthly"
+        ).innerHTML = sessionStorage.getItem("payeMonthly");
+        document.getElementById(
+          "tpensionmonthly"
+        ).innerHTML = sessionStorage.getItem("pensionMonthly");
+        document.getElementById(
+          "tmedicaremonthly"
+        ).innerHTML = sessionStorage.getItem("medicareMonthly");
+        // document.getElementById(
+        //   "takehomemonthly"
+        // ).innerHTML = sessionStorage.getItem("takehomeMonthly");
+
+        // Get weekly result
+        document.getElementById(
+          "tgrossweekly"
+        ).innerHTML = sessionStorage.getItem("grossIncomeWeekly");
+        document.getElementById(
+          "tfederalweekly"
+        ).innerHTML = sessionStorage.getItem("federalTaxWeekly");
+        document.getElementById(
+          "tstateweekly"
+        ).innerHTML = sessionStorage.getItem("stateTaxWeekly");
+        document.getElementById(
+          "tpayeweekly"
+        ).innerHTML = sessionStorage.getItem("payeWeekly");
+        document.getElementById(
+          "tpensionweekly"
+        ).innerHTML = sessionStorage.getItem("pensionWeekly");
+        document.getElementById(
+          "tmedicareweekly"
+        ).innerHTML = sessionStorage.getItem("medicareWeekly");
+        // document.getElementById(
+        //   "takehomeweekly"
+        // ).innerHTML = sessionStorage.getItem("takehomeWeekly");
+
+        // Get daily result
+        document.getElementById(
+          "tgrossdaily"
+        ).innerHTML = sessionStorage.getItem("grossIncomeDaily");
+        document.getElementById(
+          "tfederaldaily"
+        ).innerHTML = sessionStorage.getItem("federalTaxDaily");
+        document.getElementById(
+          "tstatedaily"
+        ).innerHTML = sessionStorage.getItem("stateTaxDaily");
+        document.getElementById(
+          "tpayedaily"
+        ).innerHTML = sessionStorage.getItem("payeDaily");
+        document.getElementById(
+          "tpensiondaily"
+        ).innerHTML = sessionStorage.getItem("pensionDaily");
+        document.getElementById(
+          "tmedicaredaily"
+        ).innerHTML = sessionStorage.getItem("medicareDaily");
+        // document.getElementById(
+        //   "takehomedaily"
+        // ).innerHTML = sessionStorage.getItem("takehomeDaily");
+      }
+    </script>
     <div class="container mt-5">
       <header class="text-center p-2">
         <h3>Tax Calculation Summary</h3>
@@ -21,20 +136,20 @@
       <section class="p-2 bg-light">
         <div class="row">
           <div class="col-md-3">
-            <b></b>
+            <b id="syearlyincome"></b>
             <p>Gross Yearly Income</p>
           </div>
           <div class="col-md-3">
-            <b></b>
+            <b id="syearlytax"></b>
             <p>Yearly Taxes</p>
           </div>
           <div class="col-md-3">
-            <b></b>
+            <b id="syearlytakehome"></b>
             <p>Yearly Take Home</p>
           </div>
           <div class="col-md-3">
-            <b></b>
-            <p>Effective Taxes</p>
+            <b id="seffectivetax"></b>
+            <p>Effective Tax Rate</p>
           </div>
         </div>
       </section>
@@ -52,38 +167,45 @@
           <tbody>
             <tr>
               <td class="font-weight-bold">Gross Income</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="tgrossyearly"></td>
+              <td id="tgrossmonthly"></td>
+              <td id="tgrossweekly"></td>
+              <td id="tgrossdaily"></td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">Federal Tax</td>
+              <td id="tfederalyearly"></td>
+              <td id="tfederalmonthly"></td>
+              <td id="tfederalweekly"></td>
+              <td id="tfederaldaily"></td>
             </tr>
             <tr>
               <td class="font-weight-bold">State Tax</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="tstateyearly"></td>
+              <td id="tstatemonthly"></td>
+              <td id="tstateweekly"></td>
+              <td id="tstatedaily"></td>
             </tr>
             <tr>
               <td class="font-weight-bold">PAYE</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="tpayeyearly"></td>
+              <td id="tpayemonthly"></td>
+              <td id="tpayeweekly"></td>
+              <td id="tpayedaily"></td>
             </tr>
             <tr>
               <td class="font-weight-bold">Pension Contribution</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="tpensionyearly"></td>
+              <td id="tpensionmonthly"></td>
+              <td id="tpensionweekly"></td>
+              <td id="tpensiondaily"></td>
             </tr>
             <tr>
               <td class="font-weight-bold">Medicare</td>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="tmedicareyearly"></td>
+              <td id="tmedicaremonthly"></td>
+              <td id="tmedicareweekly"></td>
+              <td id="tmedicaredaily"></td>
             </tr>
             <tr>
               <td></td>
@@ -94,7 +216,7 @@
             </tr>
             <tr>
               <td class="font-weight-bold">Take Home</td>
-              <td></td>
+              <td id="ttakehomeyearly"></td>
               <td></td>
               <td></td>
               <td></td>
