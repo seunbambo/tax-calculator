@@ -21,6 +21,7 @@
       var medicare;
 
       var fullname;
+      var taxstate;
 
       var grossIncomeYearly;
       var grossIncomeMonthly;
@@ -68,6 +69,7 @@
 
       function calculateTax() {
         fullname = document.getElementById("txtfullname").value;
+
         grossIncomeYearly = document.getElementById("txtgrossincome").value;
         grossIncomeMonthly =
           document.getElementById("txtgrossincome").value / 12;
@@ -77,6 +79,8 @@
           document.getElementById("txtgrossincome").value / 365;
 
         sessionStorage.setItem("effectiveTaxRate", effectiveTaxRate);
+
+        sessionStorage.setItem("fullname", fullname);
 
         // Store values in sessionState for yearly
         if (cbostate.value == "Arizona") {
