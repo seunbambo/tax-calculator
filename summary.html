@@ -15,7 +15,15 @@
   <body onload="getTaxResult()">
     <script>
       var yearlyTax;
+      var monthlyTax;
+      var weeklyTax;
+      var dailyTax;
+
       var yearlyTakeHome;
+      var monthlyTakeHome;
+      var weeklyTakeHome;
+      var dailyTakeHome;
+
       var effectiveTaxRate;
 
       function getTaxResult() {
@@ -53,6 +61,7 @@
           Number(sessionStorage.getItem("grossIncomeYearly")) - yearlyTax;
 
         document.getElementById("syearlytakehome").innerHTML = yearlyTakeHome;
+        document.getElementById("ttakehomeyearly").innerHTML = yearlyTakeHome;
 
         document.getElementById("seffectivetax").innerHTML = Number(
           sessionStorage.getItem("effectiveTaxRate")
@@ -77,9 +86,15 @@
         document.getElementById(
           "tmedicaremonthly"
         ).innerHTML = sessionStorage.getItem("medicareMonthly");
-        // document.getElementById(
-        //   "takehomemonthly"
-        // ).innerHTML = sessionStorage.getItem("takehomeMonthly");
+
+        monthlyTax =
+          Number(sessionStorage.getItem("federalTaxMonthly")) +
+          Number(sessionStorage.getItem("stateTaxMonthly")) +
+          Number(sessionStorage.getItem("payeMonthly")) +
+          Number(sessionStorage.getItem("pensionMonthly")) +
+          Number(sessionStorage.getItem("medicareMonthly"));
+
+        document.getElementById("ttakehomemonthly").innerHTML = monthlyTax;
 
         // Get weekly result
         document.getElementById(
@@ -100,9 +115,15 @@
         document.getElementById(
           "tmedicareweekly"
         ).innerHTML = sessionStorage.getItem("medicareWeekly");
-        // document.getElementById(
-        //   "takehomeweekly"
-        // ).innerHTML = sessionStorage.getItem("takehomeWeekly");
+
+        weeklyTax =
+          Number(sessionStorage.getItem("federalTaxWeekly")) +
+          Number(sessionStorage.getItem("stateTaxWeekly")) +
+          Number(sessionStorage.getItem("payeWeekly")) +
+          Number(sessionStorage.getItem("pensionWeekly")) +
+          Number(sessionStorage.getItem("medicareWeekly"));
+
+        document.getElementById("ttakehomeweekly").innerHTML = weeklyTax;
 
         // Get daily result
         document.getElementById(
@@ -123,9 +144,15 @@
         document.getElementById(
           "tmedicaredaily"
         ).innerHTML = sessionStorage.getItem("medicareDaily");
-        // document.getElementById(
-        //   "takehomedaily"
-        // ).innerHTML = sessionStorage.getItem("takehomeDaily");
+
+        dailyTax =
+          Number(sessionStorage.getItem("federalTaxDaily")) +
+          Number(sessionStorage.getItem("stateTaxDaily")) +
+          Number(sessionStorage.getItem("payeDaily")) +
+          Number(sessionStorage.getItem("pensionDaily")) +
+          Number(sessionStorage.getItem("medicareDaily"));
+
+        document.getElementById("ttakehomedaily").innerHTML = dailyTax;
       }
     </script>
     <div class="container mt-5">
@@ -217,9 +244,9 @@
             <tr>
               <td class="font-weight-bold">Take Home</td>
               <td id="ttakehomeyearly"></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <td id="ttakehomemonthly"></td>
+              <td id="ttakehomeweekly"></td>
+              <td id="ttakehomedaily"></td>
             </tr>
           </tbody>
         </table>
