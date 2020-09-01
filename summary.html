@@ -27,6 +27,10 @@
       var effectiveTaxRate;
 
       function getTaxResult() {
+        document.getElementById("taxsummaryheader").innerHTML =
+          sessionStorage.getItem("fullname") +
+          " your tax calculation summary for the state of " +
+          sessionStorage.getItem("taxstate");
         // get yearly results
         document.getElementById(
           "tgrossyearly"
@@ -157,7 +161,8 @@
     </script>
     <div class="container mt-5">
       <header class="text-center p-2">
-        <h3>Tax Calculation Summary</h3>
+        <h3 id="taxsummaryheader"></h3>
+        <h4 id="hfullname"></h4>
       </header>
 
       <section class="p-2 bg-light">

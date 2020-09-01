@@ -69,6 +69,7 @@
 
       function calculateTax() {
         fullname = document.getElementById("txtfullname").value;
+        taxstate = document.getElementById("cbostate").value;
 
         grossIncomeYearly = document.getElementById("txtgrossincome").value;
         grossIncomeMonthly =
@@ -81,6 +82,7 @@
         sessionStorage.setItem("effectiveTaxRate", effectiveTaxRate);
 
         sessionStorage.setItem("fullname", fullname);
+        sessionStorage.setItem("taxstate", taxstate);
 
         // Store values in sessionState for yearly
         if (cbostate.value == "Arizona") {
